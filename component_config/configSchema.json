@@ -1,0 +1,17 @@
+{
+  "type": "object",
+  "title": "extractor configuration",
+  "required": [
+    "print_hello"
+  ],
+  "properties": {
+    "print_hello": {
+      "type": "boolean",
+      "title": "Print Hello"
+    },
+    "debug": {
+      "type": "boolean",
+      "title": "Debug"
+    }
+  }
+}

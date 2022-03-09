@@ -1,0 +1,42 @@
+name: Deploy to developer portal
+
+on:
+  push:
+    tags:
+      - '[0-9]*.[0-9]*.[0-9]*'
+
+jobs:
+  build_n_deploy:
+    runs-on: ubuntu-latest
+    env:
+      APP_IMAGE: keboola-component
+      KBC_DEVELOPERPORTAL_USERNAME: ${{ secrets.KBC_DEVELOPERPORTAL_USERNAME }}
+      KBC_DEVELOPERPORTAL_PASSWORD: ${{ secrets.KBC_DEVELOPERPORTAL_PASSWORD }}
+      KBC_DEVELOPERPORTAL_VENDOR: ${{ secrets.KBC_DEVELOPERPORTAL_VENDOR }}
+      KBC_DEVELOPERPORTAL_APP: ${{ secrets.KBC_DEVELOPERPORTAL_APP }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build image
+        run: docker build . --tag=$APP_IMAGE
+      - name: Run Flake Lint
+        run: docker run $APP_IMAGE flake8 /code/ --config=/code/flake8.cfg
+      - name: Unit Test
+        run: docker run $APP_IMAGE python -m unittest discover
+        # Functional tests in project - uncomment to enable
+#      - name: Functional tests
+#        run: |
+#          docker run --rm -e KBC_STORAGE_TOKEN quay.io/keboola/syrup-cli:latest run-job $KBC_DEVELOPERPORTAL_APP $BASE_KBC_CONFIG test
+#          docker run --rm -e KBC_STORAGE_TOKEN quay.io/keboola/syrup-cli:latest run-job $KBC_DEVELOPERPORTAL_APP $KBC_CONFIG_1 test
+
+      - uses: actions/checkout@v2
+      - name: Set tag env
+        run: echo "GITHUB_TAG=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+      - name: Deploy
+        run: |
+          docker pull quay.io/keboola/developer-portal-cli-v2:latest
+          chmod +x ./scripts/update_dev_portal_properties.sh
+          chmod +x ./deploy.sh
+      - name: Update Developer portal properties
+        run: ./scripts/update_dev_portal_properties.sh
+      - name: Deploy
+        run: ./deploy.sh

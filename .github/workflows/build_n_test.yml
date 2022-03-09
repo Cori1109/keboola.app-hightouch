@@ -1,0 +1,21 @@
+name: Build & Test
+on: [ push ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      APP_IMAGE: keboola-component
+      KBC_DEVELOPERPORTAL_USERNAME: ${{ secrets.KBC_DEVELOPERPORTAL_USERNAME }}
+      KBC_DEVELOPERPORTAL_PASSWORD: ${{ secrets.KBC_DEVELOPERPORTAL_PASSWORD }}
+      KBC_DEVELOPERPORTAL_VENDOR: ${{ secrets.KBC_DEVELOPERPORTAL_VENDOR }}
+      KBC_DEVELOPERPORTAL_APP: ${{ secrets.KBC_DEVELOPERPORTAL_APP }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build image
+        run: docker build . --tag=$APP_IMAGE
+      - name: Run Flake Lint
+        run: docker run $APP_IMAGE flake8 /code/ --config=/code/flake8.cfg
+      - name: Unit Test
+        run: docker run $APP_IMAGE python -m unittest discover
+      - name: Set tag env
+        run: echo "GITHUB_TAG=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV

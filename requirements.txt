@@ -1,0 +1,5 @@
+keboola.component==1.3.7
+keboola.utils
+keboola.http-client
+mock
+freezegun

@@ -13,11 +13,9 @@
       "title": "Enter API Key"
     },
     "endpoint": {
-      "type": "array",
-      "maxItems": 1,
+      "type": "string",
       "title": "Select endpoint",
-      "items": {
-        "enum": [
+      "enum": [
         "Run Sync"
       ]
     },
@@ -25,6 +23,5 @@
       "type": "string",
       "title": "Enter Sync ID"
     }
-  }
   }
 }

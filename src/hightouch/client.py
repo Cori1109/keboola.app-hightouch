@@ -18,4 +18,3 @@ class hightouchClient(HttpClient):
         Run a sync
         """
         self.post(endpoint_path=sync_id)
-

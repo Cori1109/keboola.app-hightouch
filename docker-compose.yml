@@ -19,3 +19,4 @@ services:
     command:
       - /bin/sh
       - /code/scripts/build_n_test.sh
+      - /code/scripts/update_dev_portal_properties.sh

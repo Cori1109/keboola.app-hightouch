@@ -30,7 +30,7 @@ then
             -e KBC_DEVELOPERPORTAL_USERNAME \
             -e KBC_DEVELOPERPORTAL_PASSWORD \
             quay.io/keboola/developer-portal-cli-v2:latest \
-            update-app-property ${KBC_DEVELOPERPORTAL_VENDOR} ${KBC_DEVELOPERPORTAL_APP} configurationSchema --value="$value"
+            update-app-property  configurationSchema --value="$value"
 else
     echo "configurationSchema is empty!"
 fi

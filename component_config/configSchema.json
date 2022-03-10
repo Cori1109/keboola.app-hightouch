@@ -1,1 +1,22 @@
-{}
+{
+  "type": "object",
+  "title": "extractor configuration",
+  "required": [
+    "#api_key",
+    "sync_id"
+  ],
+  "properties": {
+    "api_token": {
+      "type": "password",
+      "title": "Enter API Key"
+    },
+    "sync_id": {
+      "type": "string",
+      "title": "Enter Sync ID"
+    },
+    "debug": {
+      "type": "boolean",
+      "title": "Debug"
+    }
+  }
+}

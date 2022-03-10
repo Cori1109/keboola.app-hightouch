@@ -2,9 +2,7 @@
 Template Component main class.
 
 """
-import csv
 import logging
-from datetime import datetime
 
 from keboola.component.base import ComponentBase
 from keboola.component.exceptions import UserException
@@ -17,7 +15,7 @@ KEY_SYNC_ID = 'sync_id'
 
 # list of mandatory parameters => if some is missing,
 # component will fail with readable message on initialization.
-REQUIRED_PARAMETERS = [KEY_API_TOKEN, KEY_ENDPOINT]
+REQUIRED_PARAMETERS = [KEY_API_TOKEN, KEY_ENDPOINT, KEY_SYNC_ID]
 REQUIRED_IMAGE_PARS = []
 
 
@@ -39,25 +37,20 @@ class Component(ComponentBase):
         """
         Main execution code
         """
-
         # ####### EXAMPLE TO REMOVE
         # check for missing configuration parameters
         self.validate_configuration_parameters(REQUIRED_PARAMETERS)
         self.validate_image_parameters(REQUIRED_IMAGE_PARS)
-        params = self.configuration.parameters 
-        
+        params = self.configuration.parameters
         endpoint = params.get(KEY_ENDPOINT)
-
         client = hightouchClient(params.get(KEY_API_TOKEN))
 
         if endpoint == "Run Sync":
             sync_id = params.get(KEY_SYNC_ID)
             response = client.run_sync(sync_id)
-            self.logger.info(response)
+            logging.logger.info(response)
 
-"""
-        Main entrypoint
-"""
+
 if __name__ == "__main__":
     try:
         comp = Component()

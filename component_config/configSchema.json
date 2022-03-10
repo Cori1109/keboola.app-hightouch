@@ -1,13 +1,14 @@
 {
   "type": "object",
-  "title": "extractor configuration",
+  "title": "Application configuration",
   "required": [
     "#api_key",
     "sync_id"
   ],
   "properties": {
     "api_token": {
-      "type": "password",
+      "type": "string",
+      "format": "password",
       "title": "Enter API Key"
     },
     "sync_id": {

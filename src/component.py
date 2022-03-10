@@ -49,12 +49,15 @@ class Component(ComponentBase):
         if endpoint == "Run Sync":
             sync_id = params.get(KEY_SYNC_ID)
             response = client.run_sync(sync_id)
-            #self.logger.info(response)
+            logging.logger.info(response)
 
 """
         Main entrypoint
 """
+
 if __name__ == "__main__":
+
+    
     try:
         comp = Component()
         # this triggers the run method by default and is controlled by the configuration.action parameter

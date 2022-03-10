@@ -38,7 +38,6 @@ class Component(ComponentBase):
         """
         Main execution code
         """
-
         # ####### EXAMPLE TO REMOVE
         # check for missing configuration parameters
         self.validate_configuration_parameters(REQUIRED_PARAMETERS)

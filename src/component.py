@@ -17,7 +17,7 @@ KEY_SYNC_ID = 'sync_id'
 
 # list of mandatory parameters => if some is missing,
 # component will fail with readable message on initialization.
-REQUIRED_PARAMETERS = [KEY_API_TOKEN, KEY_ENDPOINT]
+REQUIRED_PARAMETERS = [KEY_API_TOKEN, KEY_ENDPOINT, KEY_SYNC_ID]
 REQUIRED_IMAGE_PARS = []
 
 
@@ -53,7 +53,7 @@ class Component(ComponentBase):
         if endpoint == "Run Sync":
             sync_id = params.get(KEY_SYNC_ID)
             response = client.run_sync(sync_id)
-            self.logger.info(response)
+            #self.logger.info(response)
 
 """
         Main entrypoint

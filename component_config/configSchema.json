@@ -6,10 +6,19 @@
     "sync_id"
   ],
   "properties": {
-    "api_token": {
+    "#api_token": {
       "type": "string",
       "format": "password",
       "title": "Enter API Key"
+    },
+    "endpoint": {
+      "type": "array",
+      "maxItems": 1,
+      "title": "Select endpoint",
+      "items": {
+        "enum": [
+        "Run Sync"
+      ]
     },
     "sync_id": {
       "type": "string",
@@ -19,5 +28,6 @@
       "type": "boolean",
       "title": "Debug"
     }
+  }
   }
 }

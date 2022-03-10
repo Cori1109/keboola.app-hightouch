@@ -51,6 +51,7 @@ class Component(ComponentBase):
             response = client.run_sync(sync_id)
             logging.logger.info(response)
 
+
 if __name__ == "__main__":
     try:
         comp = Component()

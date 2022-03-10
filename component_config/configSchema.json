@@ -3,6 +3,7 @@
   "title": "Application configuration",
   "required": [
     "#api_key",
+    "endpoint",
     "sync_id"
   ],
   "properties": {
@@ -23,10 +24,6 @@
     "sync_id": {
       "type": "string",
       "title": "Enter Sync ID"
-    },
-    "debug": {
-      "type": "boolean",
-      "title": "Debug"
     }
   }
   }

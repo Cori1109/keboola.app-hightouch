@@ -6,20 +6,20 @@ docker pull quay.io/keboola/developer-portal-cli-v2:latest
 
 
 # Update properties in Keboola Developer Portal
-echo "Updating long description"
-value=`cat component_config/component_long_description.md`
-echo "$value"
-if [ ! -z "$value" ]
-then
-    docker run --rm \
-            -e KBC_DEVELOPERPORTAL_USERNAME \
-            -e KBC_DEVELOPERPORTAL_PASSWORD \
-            quay.io/keboola/developer-portal-cli-v2:latest \
-            update-app-property ${KBC_DEVELOPERPORTAL_VENDOR} ${KBC_DEVELOPERPORTAL_APP} longDescription --value="$value"
-else
-    echo "longDescription is empty!"
-    exit 1
-fi
+#echo "Updating long description"
+#value=`cat component_config/component_long_description.md`
+#echo "$value"
+#if [ ! -z "$value" ]
+#then
+#    docker run --rm \
+#            -e KBC_DEVELOPERPORTAL_USERNAME \
+#            -e KBC_DEVELOPERPORTAL_PASSWORD \
+#            quay.io/keboola/developer-portal-cli-v2:latest \
+#            update-app-property ${KBC_DEVELOPERPORTAL_VENDOR} ${KBC_DEVELOPERPORTAL_APP} longDescription --value="$value"
+#else
+#    echo "longDescription is empty!"
+#    exit 1
+#fi
 
 echo "Updating config schema"
 value=`cat component_config/configSchema.json`

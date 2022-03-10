@@ -33,6 +33,7 @@ class Component(ComponentBase):
     def __init__(self):
         super().__init__()
 
+
     def run(self):
         """
         Main execution code

@@ -13,6 +13,7 @@ class hightouchClient(HttpClient):
         auth_header = {'Authorization': f'Bearer {access_token}'}
         super().__init__(BASE_URL, auth_header=auth_header)
 
+
     def run_sync(self, sync_id):
         """
         Run a sync

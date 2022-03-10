@@ -1,1 +1,1 @@
-TOrchestrate syncs on hightouch from keboola
+Orchestrate syncs

@@ -33,7 +33,6 @@ class Component(ComponentBase):
     def __init__(self):
         super().__init__()
 
-
     def run(self):
         """
         Main execution code
@@ -50,7 +49,6 @@ class Component(ComponentBase):
             sync_id = params.get(KEY_SYNC_ID)
             response = client.run_sync(sync_id)
             logging.logger.info(response)
-
 
 if __name__ == "__main__":
     try:

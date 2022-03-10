@@ -2,9 +2,7 @@
 Template Component main class.
 
 """
-import csv
 import logging
-from datetime import datetime
 
 from keboola.component.base import ComponentBase
 from keboola.component.exceptions import UserException
@@ -44,10 +42,8 @@ class Component(ComponentBase):
         # check for missing configuration parameters
         self.validate_configuration_parameters(REQUIRED_PARAMETERS)
         self.validate_image_parameters(REQUIRED_IMAGE_PARS)
-        params = self.configuration.parameters 
-        
+        params = self.configuration.parameters
         endpoint = params.get(KEY_ENDPOINT)
-
         client = hightouchClient(params.get(KEY_API_TOKEN))
 
         if endpoint == "Run Sync":

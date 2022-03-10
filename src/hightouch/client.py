@@ -6,7 +6,7 @@ BASE_URL = "https://api.hightouch.io/api/v2/rest/run/"
 class hightouchClient(HttpClient):
     """
 
-    Main class for the Hightouch Client.
+    Main class for the Hightouch Client. Currently only supports running syncs.
     """
 
     def __init__(self, access_token):

@@ -1,17 +1,27 @@
 {
   "type": "object",
-  "title": "extractor configuration",
+  "title": "Application configuration",
   "required": [
-    "print_hello"
+    "#api_token",
+    "endpoint",
+    "sync_id"
   ],
   "properties": {
-    "print_hello": {
-      "type": "boolean",
-      "title": "Print Hello"
+    "#api_token": {
+      "type": "string",
+      "format": "password",
+      "title": "Enter API Key"
     },
-    "debug": {
-      "type": "boolean",
-      "title": "Debug"
+    "endpoint": {
+      "type": "string",
+      "title": "Select endpoint",
+      "enum": [
+        "Run Sync"
+      ]
+    },
+    "sync_id": {
+      "type": "string",
+      "title": "Enter Sync ID"
     }
   }
 }

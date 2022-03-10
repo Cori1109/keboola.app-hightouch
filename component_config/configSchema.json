@@ -2,7 +2,7 @@
   "type": "object",
   "title": "Application configuration",
   "required": [
-    "#api_key",
+    "#api_token",
     "endpoint",
     "sync_id"
   ],
